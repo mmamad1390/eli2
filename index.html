@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#28104f">
+<title>روزت مبارک قند عسل من💜💙</title>
+<style>
+  * { box-sizing: border-box; }
+  :root { --purple:#cda5ff; --blue:#8de4ff; }
+  body {
+    margin:0; min-height:100vh; overflow:hidden; display:grid; place-items:center;
+    font-family:Tahoma, Arial, sans-serif; color:#fff;
+    background: radial-gradient(circle at 20% 20%, #4d2786 0, transparent 36%),
+                radial-gradient(circle at 85% 80%, #174f89 0, transparent 38%),
+                linear-gradient(135deg,#120722,#251044 55%,#071b3e);
+  }
+  .stars, .hearts { position:fixed; inset:0; overflow:hidden; pointer-events:none; }
+  .star { position:absolute; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.55; animation:twinkle 2s infinite alternate; }
+  @keyframes twinkle { to { opacity:.12; transform:scale(.55); } }
+  .scene { position:relative; z-index:2; width:min(92vw,520px); text-align:center; padding:22px 14px; }
+  .hint { color:#e6d7ff; font-size:14px; margin:0 0 26px; letter-spacing:.2px; animation:softPulse 2s infinite; }
+  @keyframes softPulse { 50% { opacity:.65; } }
+  .envelope-button { border:0; background:none; cursor:pointer; padding:0; color:inherit; -webkit-tap-highlight-color:transparent; }
+  .envelope-wrap { width:min(76vw,310px); height:min(54vw,220px); min-height:170px; margin:auto; position:relative; filter:drop-shadow(0 18px 25px #05001488); transition:transform .3s; }
+  .envelope-button:hover .envelope-wrap { transform:translateY(-5px); }
+  .envelope { position:absolute; inset:0; overflow:hidden; border-radius:12px; background:linear-gradient(145deg,#b88cff,#5f6eea); }
+  .envelope:before { content:""; position:absolute; inset:0; background:linear-gradient(35deg,transparent 49.5%,#8c67d9 50%),linear-gradient(-35deg,transparent 49.5%,#a985f1 50%); opacity:.9; }
+  .flap { position:absolute; z-index:3; top:0; left:0; width:100%; height:60%; transform-origin:top; background:linear-gradient(145deg,#e0baff,#8e8bff); clip-path:polygon(0 0,100% 0,50% 100%); transition:transform .85s ease, z-index .1s .35s; }
+  .letter-peek { position:absolute; z-index:2; left:8%; width:84%; height:85%; bottom:4%; border-radius:8px; background:#fff8ff; color:#57377b; display:grid; place-items:center; font-size:35px; transition:transform .85s ease; }
+  .seal { position:absolute; z-index:4; left:50%; top:47%; transform:translate(-50%,-50%); width:62px; height:62px; display:grid; place-items:center; border-radius:50%; background:linear-gradient(145deg,#f8d8ff,#d59dff); box-shadow:0 5px 18px #4b197d66; font-size:30px; transition:opacity .3s, transform .3s; }
+  .open .flap { transform:rotateX(180deg); z-index:1; }
+  .open .letter-peek { transform:translateY(-66%); }
+  .open .seal { opacity:0; transform:translate(-50%,-50%) scale(.4); }
+  .envelope-label { margin-top:18px; font-size:15px; color:#d8c7ff; }
+  .card { display:none; width:100%; padding:32px 22px; border:1px solid #ffffff3b; border-radius:28px; background:#ffffff12; backdrop-filter:blur(14px); box-shadow:0 0 45px #a96aff25; animation:cardIn .9s ease both; }
+  .card.visible { display:block; }
+  @keyframes cardIn { from { opacity:0; transform:translateY(22px) scale(.94); } to { opacity:1; transform:translateY(0) scale(1); } }
+  .big-heart { font-size:57px; margin-bottom:10px; filter:drop-shadow(0 0 14px #d7a0ff); animation:heartbeat 1.15s infinite; }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 15%{transform:scale(1.12)} 30%{transform:scale(1)} 45%{transform:scale(1.08)} }
+  h1 { font-size:clamp(25px,6.5vw,35px); line-height:1.9; margin:0 0 15px; text-shadow:0 0 17px #c28aff8a; }
+  .message { font-size:clamp(16px,4vw,19px); line-height:2.2; color:#eee4ff; margin:0 0 20px; }
+  .small-note { font-size:14px; color:#bfeaff; line-height:2; margin-top:17px; }
+  .decor { letter-spacing:7px; font-size:23px; }
+  .replay { margin-top:22px; border:1px solid #ffffff55; color:#fff; background:#ffffff12; border-radius:999px; padding:10px 18px; font:inherit; cursor:pointer; }
+  .replay:hover { background:#ffffff25; }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="hearts" id="hearts"></div>
+
+<main class="scene">
+  <section id="intro">
+    <p class="hint">کادوی کوچیکیه ولی تنها چیزی بود که میتونستم تو چند ساعت اماده کنم </p>
+    <button class="envelope-button" id="openBtn" aria-label="باز کردن نامه">
+      <div class="envelope-wrap" id="envelopeWrap">
+        <div class="envelope"></div>
+        <div class="letter-peek">💌</div>
+        <div class="flap"></div>
+        <div class="seal">💜</div>
+      </div>
+      <div class="envelope-label">بزن رو نامه قلب بابا 💙</div>
+    </button>
+  </section>
+
+  <section class="card" id="loveCard" aria-live="polite">
+    <div class="big-heart">💜</div>
+    <h1>روزت مبارک<br> دختر یکی یدونه ام💙</h1>
+    <p class="message">تقدیم به خاص‌ترین دختر تو کل دنیا<br>برای بابایی 💙</p>
+    <div class="decor">💜 💙 💜</div>
+    <p class="small-note">تو قشنگترین اتفاق زندگی منی ✨<br> امیدوارم همیشه بخندی قند عسل من روزت مبارک همیشه همیشه یادت باشه که چقدر عاشتقم همه کسم💜💙 </p>
+    <button class="replay" id="replayBtn">💌 دوباره دیدن نامه</button>
+  </section>
+</main>
+
+<script>
+  const stars = document.getElementById('stars');
+  for (let i=0; i<65; i++) {
+    const s = document.createElement('span');
+    s.className = 'star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = Math.random()*2+'s';
+    s.style.animationDuration = (1.2+Math.random()*2)+'s';
+    stars.appendChild(s);
+  }
+
+  const heartLayer = document.getElementById('hearts');
+  const symbols = ['💜','💙','🩵','💕','💗','♡'];
+  let raining = false;
+  let rainTimer;
+
+  function makeHeart() {
+    const h = document.createElement('span');
+    h.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    h.style.position = 'absolute';
+    h.style.left = Math.random()*100+'%';
+    h.style.top = '-45px';
+    h.style.fontSize = (15+Math.random()*22)+'px';
+    h.style.opacity = (0.55+Math.random()*0.45).toFixed(2);
+    h.style.filter = 'drop-shadow(0 0 6px #b88cff88)';
+    h.style.animation = `fall ${4+Math.random()*5}s linear forwards`;
+    heartLayer.appendChild(h);
+    setTimeout(()=>h.remove(), 9500);
+  }
+
+  const style = document.createElement('style');
+  style.textContent = '@keyframes fall { to { transform:translateY(115vh) rotate(360deg); opacity:0; } }';
+  document.head.appendChild(style);
+
+  function startRain() {
+    if (raining) return;
+    raining = true;
+    for(let i=0;i<24;i++) setTimeout(makeHeart, i*90);
+    rainTimer = setInterval(makeHeart, 180);
+  }
+  function stopRain() {
+    raining = false;
+    clearInterval(rainTimer);
+  }
+
+  const intro = document.getElementById('intro');
+  const card = document.getElementById('loveCard');
+  const envelopeWrap = document.getElementById('envelopeWrap');
+
+  document.getElementById('openBtn').addEventListener('click', () => {
+    envelopeWrap.classList.add('open');
+    startRain();
+    setTimeout(() => {
+      intro.style.display = 'none';
+      card.classList.add('visible');
+    }, 950);
+  });
+
+  document.getElementById('replayBtn').addEventListener('click', () => {
+    stopRain();
+    card.classList.remove('visible');
+    intro.style.display = 'block';
+    envelopeWrap.classList.remove('open');
+    heartLayer.innerHTML = '';
+  });
+</script>
+</body>
+</html>
